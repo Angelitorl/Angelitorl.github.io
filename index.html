@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+        <script>
+
+            $(document).ready(function(){
+
+                $('#flour').change(function() { 
+                    var flour = parseFloat($('#flour').val());
+                    calculateValuesBasedOnFlour(flour)
+                }); 
+
+                $('#water').change(function() { 
+                    var water = parseFloat($('#water').val());
+                    var flour = water / 0.65;
+                    calculateValuesBasedOnFlour(flour)
+                });
+
+                $('#salt').change(function() { 
+                    var salt = parseFloat($('#salt').val());
+                    var flour = salt / 0.03;
+                    calculateValuesBasedOnFlour(flour)
+                });
+
+                $('#oil').change(function() { 
+                    var oil = parseFloat($('#oil').val());
+                    var flour = oil / 0.03;
+                    calculateValuesBasedOnFlour(flour)
+                });
+
+                $('#yeast').change(function() { 
+                    var yeast = parseFloat($('#yeast').val());
+                    var flour = yeast / 0.002;
+                    calculateValuesBasedOnFlour(flour)
+                });
+
+
+            });
+
+            function calculateValuesBasedOnFlour(flour){
+                    var water = flour * 0.65;
+                    var salt = flour * 0.03;
+                    var oil = flour * 0.03;
+                    var yeast = flour * 0.002;
+
+                    setValues(flour, water, salt, yeast, oil)
+            }
+
+            function setValues(flour, water, salt, yeast, oil, pizzaTotal){
+                $('#flour').val(Math.round( Math.abs(flour * 10 )) / 10);
+                $('#water').val(Math.round( Math.abs(water * 10 )) / 10);
+                $('#salt').val(Math.round( Math.abs(salt * 10 )) / 10);
+                $('#yeast').val(Math.round( Math.abs(yeast * 10 )) / 10);
+                $('#oil').val(Math.round( Math.abs(oil * 10 )) / 10);
+
+                var pizzaTotal = (water + salt + flour + yeast + oil) / 250;
+                $('#pizzaTotal').val(Math.round( Math.abs(pizzaTotal * 10 )) / 10);
+            }
+
+        </script>
+    </head>
+
+    <header>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="#!">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#!">Calculador de tartas de queso</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#!">Calculador de pizza</a>
+            </li>
+        </ul>
+      
+    </header>
+
+    <body>
+
+        <div class="container">
+
+            <h3 class="text-center font-weight-bold">
+                ¡¡¡¡LAS PROPORCIONES DEFINITIVAS PARA HACER PIZZA EN CASA!!!!
+            </h3>
+            <p class="text-center font-weight-bold">
+                Introduce el peso del ingrediente que quieras tomar como base y disfruta del cálculo automático.
+            </p>
+
+        <table class="table font-weight-bold">
+
+            <tr>
+                <td class="font-weight-bold">
+                    FLOUR: 
+                </td>
+                <td>
+                    <input id='flour' type="number" class="form-control formBlock" name="bus_ticket"/><br />
+                </td>
+                <td>
+                     grams
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    WATER: 
+                </td>
+                <td>
+                    <input id='water' type="number" class="form-control formBlock" name="bus_ticket"/><br />
+                </td>
+                <td>
+                     grams
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    SALT: 
+                </td>
+                <td>
+                    <input id='salt' type="number" class="form-control formBlock" name="bus_ticket"/><br />
+                </td>
+                <td>
+                     grams
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    OIL: 
+                </td>
+                <td>
+                    <input id='oil' type="number" class="form-control formBlock" name="bus_ticket"/><br />
+                </td>
+                <td>
+                     grams
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    YEAST: 
+                </td>
+                <td>
+                    <input id='yeast' type="number" class="form-control formBlock" name="bus_ticket"/><br />
+                </td>
+                <td>
+                     grams
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Total de pizzas: 
+                </td>
+                <td>
+                    <input id='pizzaTotal' type="number" class="form-control formBlock" name="bus_ticket"/><br />
+                </td>
+                <td>
+                     
+                </td>
+            </tr>
+
+        </table>
+
+
+    </div>
+    </body>
+
+    <footer class="page-footer font-small blue pt-4">
+
+            <div class="container-fluid text-center text-md-left">
+          
+                <hr class="clearfix w-100 d-md-none pb-3">
+                
+                <!-- Copyright -->
+                <div class="footer-copyright text-center py-3">© 2019 Copyright:
+                <a href="https://es.wikipedia.org/wiki/Playa_de_Gand%C3%ADa"> www.litoral.com</a>
+                </div>
+                <!-- Copyright -->
+            </div>
+          </footer>
+
+
+
+</html>
