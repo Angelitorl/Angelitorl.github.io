@@ -1,5 +1,9 @@
 
+var pizzaTotalSet = false;
+
 $(document).ready(function(){
+
+
 
     $('#flour').change(function() { 
         var flour = parseFloat($('#flour').val());
@@ -30,6 +34,14 @@ $(document).ready(function(){
         calculateValuesBasedOnFlour(flour)
     });
 
+    $('#pizzaTotal').change(function() { 
+        var pizzaTotal = parseFloat($('#pizzaTotal').val());
+        var flour = pizzaTotal * 146;
+        var pizzaTotalSet = true;
+        calculateValuesBasedOnFlour(flour);
+    });
+
+
 
 });
 
@@ -49,7 +61,15 @@ function setValues(flour, water, salt, yeast, oil, pizzaTotal){
     $('#yeast').val(Math.round( Math.abs(yeast * 10 )) / 10);
     $('#oil').val(Math.round( Math.abs(oil * 10 )) / 10);
 
-    var pizzaTotal = (water + salt + flour + yeast + oil) / 250;
-    $('#pizzaTotal').val(Math.round( Math.abs(pizzaTotal * 10 )) / 10);
+    console.log(pizzaTotalSet)
+
+    if(pizzaTotalSet == true) {
+        pizzaTotalSet = false;
+    }
+    else {
+        var pizzaTotal = (water + salt + flour + yeast + oil) / 250;
+        $('#pizzaTotal').val(Math.round( Math.abs(pizzaTotal * 10 )) / 10);
+        pizzaTotalSet = false;
+    }
 }
 
